@@ -1,0 +1,25 @@
+<div id="homePage">
+	<nav class="navbar navbar-default"></nav>
+	<div class="loginPanel" ng-show="role==='oldUser'">
+		<div>User Name: <input class="form-control" type="text" ng-model="loginUserName" required></input></div><br>
+		<div>Password: &nbsp&nbsp<input class="form-control" type="password" ng-model="loginPassword" required></input></div>
+	</div>
+	<div class="signUpPanel" ng-show="role==='newUser'">
+		<div>User Name: &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<input class="form-control" type="text" ng-model="signUpUserName" required></input></div><br>
+		<div>Password: &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<input class="form-control" type="password" ng-model="signUpPassword" required></input></div><br>
+		<div>Confirm Password: <input class="form-control" type="password" ng-model="signUpPasswordConfirmation" required></input></div>
+	</div>
+	<div class="rolePick">
+	    <label class="radio-inline">
+	      <input type="radio" value="login" name="rolepickRadio" checked="checked">Login
+	    </label>
+	    <label class="radio-inline">
+	      <input type="radio" value="signUp" name="rolepickRadio">Sign Up
+	    </label>
+	</div>
+	<div class="buttonContainer">
+		<button class="btn btn-primary login" ng-show="role==='oldUser'" ng-click="login()">Login</button>
+		<button class="btn btn-primary signUp" ng-show="role==='newUser'" ng-click="signUp()">Sign Up</button>
+	</div>
+	<a href="/#/content" style="font-size:13px">View as visitor</a>
+</div>

@@ -1,0 +1,112 @@
+<div id="content">
+	<nav class="navbar navbar-default"><div class="usernameShow" ng-show="login===true">Welcome {{user}}!</div>
+	</nav>	
+	<div class="sectionContainer Upper">
+		<div class="contentSection past">
+			<div class="front">
+				<div class="frontTitle">Brief Introduction</div>
+			    <img src="../images/past.jpeg">
+			</div> 
+			<div class="back">
+			    Back content
+			</div>
+		</div>
+		<div class="contentSection current">
+			<div class="front">
+				<div class="frontTitle">Comming Fellowship Topic</div>
+			    <img src="../images/now.jpg">
+			</div> 
+			<div class="back">
+				<div class="eventContainer">
+				</div>
+			   	<button class="addNewTopic addNew btn btn-primary" ng-show="login===true">Topic Suggestion</button>
+			</div>
+		</div>
+		<div class="contentSection future">
+			<div class="front">
+				<div class="frontTitle">Future Event</div>
+			    <img src="../images/future.jpg">
+			</div> 
+			<div class="back">
+				<div class="eventContainer">
+					<div class="eventTitle" ng-repeat="event in postEvent" ng-click="viewDetail($event)" data='{{event._id}}'>{{event.eventTitle}}</div>
+				</div>
+			    <button class="addNewEvent addNew btn btn-success" ng-show="login===true">Share your idea!</button>
+			</div>
+		</div>
+	</div>
+	<div style="clear:both"></div>
+	<div class="sectionContainer Lower">
+		<div style="margin-left:200px;margin-top:50px" ng-show="login===false">
+			<button class="addNewUser addNew btn btn-primary" style="margin">Sign Up to be part of us!</button>
+		</div>
+	</div>
+	<div class="modal fade" id="createEventModal">
+	  <div class="modal-dialog">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	        <h4 class="modal-title">Create New Event</h4>
+	      </div>
+	      <div class="modal-body">
+	      	<div><span style="float:left;margin-top:6px;margin-right:15px">Title: </span><input type="text" required class="form-control" ng-model="eventTitle" style="width:500px;float:left"></div>
+	      	<div style="clear:both"></div>
+	      	<div><span style="margin-top:6px;margin-right:10px">Discription: </span><textarea type="text" required class="form-control" ng-model="eventDetails" rows="5" style="width:97%"></textarea></div>
+	      	<div style="clear:both"></div>
+	      	<input type="file" accept='image/*' id="imageUpload" style="display:none">
+	      	<button class="btn btn-primary" style="font-size:10px;margin-top:10px;float:left" id="imageUploadButton">Upload Images</button>
+	      	<img class="imageContainer" id="imageContainer1" src=''>
+	      	<img class="imageContainer" id="imageContainer2" src=''>
+	      	<img class="imageContainer" id="imageContainer3" src=''>
+	      	<div style="clear:both"></div>
+	      	<br>
+	      </div>
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+	        <button type="button" class="btn btn-success" data-dismiss="modal" id="createEventButton">Create</button>
+	      </div>
+	    </div><!-- /.modal-content -->
+	  </div><!-- /.modal-dialog -->
+	</div><!-- /.modal -->
+	<div class="modal fade" id="signUpModal">
+	  <div class="modal-dialog">
+	    <div class="modal-content">
+	      <div class="modal-header" style="background-color:#3366FF">
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	        <h4 class="modal-title" style="text-align:center;color:white">Sign Up</h4>
+	      </div>
+	      <div class="modal-body">
+			<div style="text-align:center">User Name: &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+				<input class="form-control signUpPanelInput" type="text" ng-model="signUpUserName" required></div>
+			<br>
+			<div style="text-align:center">Password: &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<input class="form-control signUpPanelInput" type="password" ng-model="signUpPassword" required></div><br>
+			<div style="text-align:center">Confirm Password: <input class="form-control signUpPanelInput" type="password" ng-model="signUpPasswordConfirmation" required></div>
+	      </div>
+	      <div class="modal-footer" style="text-align:center">
+	        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+	        <button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="signUp()">Sign Up</button>
+	      </div>
+	    </div><!-- /.modal-content -->
+	  </div><!-- /.modal-dialog -->
+	</div><!-- /.modal -->
+	<div class="modal fade" id="createTopicModal">
+	  <div class="modal-dialog">
+	    <div class="modal-content">
+	      <div class="modal-header" style="background-color:#3366FF">
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	        <h4 class="modal-title" style="color:white">Create New Topic</h4>
+	      </div>
+	      <div class="modal-body">
+		    <div><span style="float:left;margin-top:6px;margin-right:15px">Title: </span><input type="text" required class="form-control" ng-model="topicTheme" style="width:500px;float:left"></div>
+	      	<div style="clear:both"></div>
+	      	<div><span style="margin-top:6px;margin-right:10px">Discription: </span><textarea type="text" required class="form-control" ng-model="topicContent" rows="5" style="width:97%"></textarea></div>
+	      	<div style="clear:both"></div>	      	
+	      </div>
+	      <div class="modal-footer" style="text-align:center">
+	        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+	        <button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="createTopic()">Create Topic</button>
+	      </div>
+	    </div><!-- /.modal-content -->
+	  </div><!-- /.modal-dialog -->
+	</div><!-- /.modal -->
+</div>

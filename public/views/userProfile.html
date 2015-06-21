@@ -1,0 +1,104 @@
+<div id="userProfile">
+	<nav class="navbar navbar-default">
+	</nav>
+	<div class="sideBar bigRow">
+		<div class="sideBarTab basicProfile active" data-show=".profilePanel">
+			<i class="fa fa-user fa-4x" style="margin-left:25px"></i>
+			<p>Basic Profile</p>
+		</div>
+		<div class="sideBarTab eventPosted" data-show=".yourEventPanel">
+			<i class="fa fa-coffee fa-4x"></i>
+			<p>Your Event</p>
+		</div>
+		<div class="sideBarTab topicPosted" data-show=".yourTopicPanel">
+			<i class="fa fa-comment fa-4x"></i>
+			<p>Your Topic</p>
+		</div>
+	</div>
+	<div class="contentContainer bigRow">
+		<div class="profilePanel subContainer shownPanel">
+			<h2>User Profile</h2>
+			<div class="profileItem userName">User Name: {{userProfile.userName}}</div>
+			<button class="btn btn-primary passwordChangeButton">Change Password</button>
+			<button class="btn btn-success passwordConfirmButton secButton">Confirm</button>
+			<button class="btn btn-default passwordCancelButton secButton">Cancel</button>
+			<hr>
+			<div class="profileItem passwordChange">
+				<span>Old Password:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</span><input type="password" class="form-control" ng-model="oldPassword">
+				<breaker></breaker>
+				<span>New Password:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</span><input type="password" class="form-control" ng-model="newPassword1">
+				<breaker></breaker>
+				<span>Confirm Password:&nbsp&nbsp</span><input type="password" class="form-control" ng-model="newPassword2">
+				<breaker></breaker>
+			</div>
+			<div class="passwordChange">
+				<hr>
+			</div>
+			<div class="profileItem realInfo">
+				<div class="realNameUnit infoUnit">
+					<span>Real Name:&nbsp</span>
+					<div class="realName realNameShow" ng-show="userProfile.name">{{userProfile.name}}</div>
+					<input class="form-control realName realNameInput" placeholder="Tell us who you are." ng-model="realName" ng-show="!userProfile.name">
+					<button class="btn btn-primary realNameButton" ng-show="!userProfile.name" ng-click="updateName()">Update Real Name</button>
+				</div>
+				<breaker></breaker>
+				<br>
+				<div class="occupationUnit infoUnit">
+					<span>Occupation:&nbsp</span>
+					<div class="occupation occupationShow occupationShowItem">{{userProfile.occupation}}</div>
+					<button class="btn btn-primary changeOccupationButton occupationShowItem">Change Occupation</button>
+					<input class="occupation occupationInput form-control occupationInputItem" type="text" ng-model="occupation" placeholder="Update your occupation">
+					<button class="btn btn-success occupationInputItem" ng-click="updateOccupation()">Confirm</button>
+					<button class="btn btn-default occupationInputItem">Cancel</button>
+				</div>
+				<br>
+				<div class="discriptionUnit infoUnit">
+					<div>Self Discription</div>
+					<textarea class="form-control selfDiscriptionInput" ng-model="selfDiscription" rows="5" palceholder="Add some discription to let your fellows know your better"></textarea>
+					<button class="btn btn-primary selfDiscriptionButton" ng-click="updateSelfDiscription()">Update</button>
+				</div>
+			</div>
+			<hr>
+		</div>
+		<div class="yourEventPanel subContainer">
+			<h2>Your Events</h2>
+			<table class="table">
+				<thead>
+					<tr>
+						<th>Title</th>
+						<th>Status</th>
+						<th>Create Time</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr ng-repeat="myEvent in myEvents">
+						<td>{{myEvent.eventTitle}}</td>
+						<td>{{myEvent.status}}</td>
+						<td>{{myEvent.createTime}}</td>
+					</tr>
+			</tbody>
+			</table>
+		</div>
+		<div class="yourTopicPanel subContainer">
+			<h2>Your Topics</h2>
+			<table class="table">
+				<thead>
+					<tr>
+						<th>Theme</th>
+						<th>Author</th>
+						<th>Status</th>
+						<th>Comming Time</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr ng-repeat="myTopic in myTopics">
+						<td>{{myTopic.topicTheme}}</td>
+						<td>{{myTopoc.author}}</td>
+						<td>{{myTopic.status}}</td>
+						<td>{{myTopic.commingTime}}</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>
